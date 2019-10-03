@@ -1,5 +1,5 @@
-\name{CheckPNR}
-\alias{cooccurExtra}
+\name{cooccurExtra}
+\alias{CheckPNR}
 \title{
 A function to distinct the cooccurence of species pairs from a "cooccur" ouput model object.
 }
