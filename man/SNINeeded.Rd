@@ -1,5 +1,5 @@
-\name{SNINeeded}
-\alias{SNINeeded}
+\name{snineeded}
+\alias{snineeded}
 \docType{data}
 \title{
 The needed species and ingradients in my master project.
@@ -7,7 +7,7 @@ The needed species and ingradients in my master project.
 \description{
 The needed species and ingradients in my master project.
 }
-\usage{data("SNINeeded")}
+\usage{data("snineeded")}
 \format{
   Two vectors with 10 species and 3 ingradients.
   \describe{
@@ -16,5 +16,5 @@ The needed species and ingradients in my master project.
   }
 }
 \examples{
-data("SNINeeded")
+data("snineeded")
 }

@@ -1,10 +1,10 @@
-# Function "TreeSplits"
+# Function "treesplits"
 #####
 # Require Package "rpart" & "rattle"
 #####
 # A function to detect break points of species occurance in different ingradients 
 #####
-TreeSplits = function(mydata, species, ingradients, #method = "tree", 
+treesplits = function(mydata, species, ingradients, #method = "tree", 
                       show.plots = c("both", "splits", 
                                      "dendrogram", "none")){
   #####*1* "mydata" is a data set with all the variables that we need

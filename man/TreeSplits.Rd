@@ -1,4 +1,4 @@
-\name{TreeSplits}
+\name{treesplits}
 \alias{cooccurExtra}
 \title{
 A function to detect break points of species occurance in different ingradients.
@@ -7,7 +7,7 @@ A function to detect break points of species occurance in different ingradients.
 This is a function of the package "cooccurExtra". The main idea of this function is detecting break points of species occurance in different ingradients with the information of species and ingradients from different regions. It provides two kinds of plots to show the breaks points in different ingradients of each specie. Also it provides an output of break points (splits) of each ingradient and for each specie.
 }
 \usage{
-TreeSplits = function(mydata, species, ingradients,
+treesplits = function(mydata, species, ingradients,
                       show.plots = c("both", "splits", "dendrogram", "none"))
 }
 \arguments{
@@ -40,20 +40,20 @@ TreeSplits = function(mydata, species, ingradients,
   Ing.Needed <- c("Log.mud.1.", "SST")
 
   # ask for the data frame to be analized
-  macrofauna <- data(macrofauna)
+  data(macrofauna)
 
   # the default with two kinds of plots
-  mytest <- TreeSplits(macrofauna, species = Ten.Needed, ingradients = Ing.Needed)
+  mytest <- treesplits(macrofauna, species = Ten.Needed, ingradients = Ing.Needed)
 
   # show the output
   mytest
 
   # case with one specie that does not exist and show only the splits plots
-  mytest <- TreeSplits(macrofauna, species = c(Ten.Needed, "fake.specie"),
+  mytest <- treesplits(macrofauna, species = c(Ten.Needed, "fake.specie"),
                       ingradients = Ing.Needed, show.plots = "splits")
 
   # case with one ingradient that does not exist and show only the dendrograms
-  mytest <- TreeSplits(macrofauna, species = Ten.Needed,
+  mytest <- treesplits(macrofauna, species = Ten.Needed,
                       ingradients = c(Ing.Needed, "fake.specie"),
                       show.plots = "dendrogram")
 }

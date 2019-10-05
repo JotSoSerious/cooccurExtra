@@ -1,4 +1,4 @@
-\name{CoocAna}
+\name{coocana}
 \alias{cooccurExtra}
 \title{
 A function for a further analysis into the cooccurence between species base on function "cooccur".
@@ -7,7 +7,7 @@ A function for a further analysis into the cooccurence between species base on f
 This is the main function of the package "cooccurExtra". The main idea of this function is to do a further analysis into the cooccurence between species base on function "cooccur". It helps reproduce the analysis of cooccurences between different species pairs in different ingradients. It can be used in diagnostic pairs, creating splits plots, creating matrix for the use of "cooccur" function and displaying fancy output tables.
 }
 \usage{
-CoocAna(mydata, ID.Col = "es", species = NA, ingradients = NA,
+coocana(mydata, ID.Col = "es", species = NA, ingradients = NA,
         type = c("byrow", "bycol", "all"), with.splits = FALSE,
         show.tables = FALSE, pair.scatter = c("scatter", "fit", "none"),
         any.output = c("lite", "full", "none"),
@@ -78,19 +78,19 @@ CoocAna(mydata, ID.Col = "es", species = NA, ingradients = NA,
   Ing.Needed <- c("Log.mud.1.", "SST")
 
   # ask for the data frame to be analized
-  macrofauna <- data(macrofauna)
+  data(macrofauna)
 
   # show the scatter plot with fitted curve
-  mytest = CoocAna(mydata = macrofauna, species = Four.Needed,
+  mytest = coocana(mydata = macrofauna, species = Four.Needed,
                    pair.scatter = "fit")
 
   # show the split plots and the dendrograms
-  mytest = CoocAna(mydata = macrofauna, species = Four.Needed,
+  mytest = coocana(mydata = macrofauna, species = Four.Needed,
                    ingradients = Ing.Needed, with.splits = TRUE,
                    pair.scatter = "none", show.split.plot = "both")
 
   # show fancy tables
-  mytest = CoocAna(mydata = macrofauna, species = Four.Needed,
+  mytest = coocana(mydata = macrofauna, species = Four.Needed,
                    ingradients = Ing.Needed, with.splits = TRUE,
                    pair.scatter = "none", show.tables = TRUE)
 

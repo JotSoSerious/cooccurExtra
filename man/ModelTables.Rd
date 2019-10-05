@@ -1,15 +1,15 @@
-\name{ModelTables}
+\name{modeltables}
 \alias{cooccurExtra}
 \docType{data}
 \title{
-Output list of "DisplayTable" function.
+Output list of "displaytable" function.
 }
 \description{
-Output list of "DisplayTable" function, which includes a summary of statistic table, a summary of table with significant cooccurence ("positive", "negative", or "random") of species pairs. It also include two fancy formatted tables based on "formattable" package in types of htmlwidget.
+Output list of "displaytable" function, which includes a summary of statistic table, a summary of table with significant cooccurence ("positive", "negative", or "random") of species pairs. It also include two fancy formatted tables based on "formattable" package in types of htmlwidget.
 }
-\usage{data("ModelTables")}
+\usage{data("modeltables")}
 \format{
-  An output list of "DisplayTable" function, which contains the following moduels.
+  An output list of "displaytable" function, which contains the following moduels.
   \describe{
     \item{STATSTAB}{
      Statistic table in the form of data frame.
@@ -27,9 +27,9 @@ Output list of "DisplayTable" function, which includes a summary of statistic ta
 }
 \examples{
 ## import data 
-data("ModelTables")
+data("modeltables")
 
 ## see the fancy tables in type of htmlwidget
-ModelTables$STATSFT
-ModelTables$SIGNFT
+modeltables$STATSFT
+modeltables$SIGNFT
 }

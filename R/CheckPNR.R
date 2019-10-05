@@ -1,10 +1,10 @@
-# Function "CheckPNR"
+# Function "checkpnr"
 #####
 # Require Package "cooccur"
 #####
 # A function to distinct "positive", "negative", and "random"
 #####
-CheckPNR = function(cooccur.mod){
+checkpnr = function(cooccur.mod){
   ##### "cooccur.mod" should be a cooccur model
   
   ###########################################################################################

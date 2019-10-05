@@ -4,7 +4,7 @@
 #####
 # # A function for "cooccur" analysis
 #####
-CoocAna = function(mydata, ID.Col = "es", species = NA, ingradients = NA,
+coocana= function(mydata, ID.Col = "es", species = NA, ingradients = NA,
                    type = c("byrow", "bycol", "all"),
                    with.splits = FALSE, show.tables = FALSE,
                    pair.scatter = c("scatter", "fit", "none"),
@@ -101,7 +101,7 @@ CoocAna = function(mydata, ID.Col = "es", species = NA, ingradients = NA,
   #2. if splits are needed
   ###########################################################################################
   if(with.splits){
-    Temp.Splits = TreeSplits(MyData.1, species = keep.species,
+    Temp.Splits = treesplits(MyData.1, species = keep.species,
                              ingradients = keep.ingradients, show.plots = show.split.plot)
   }
   ###########################################################################################
@@ -300,7 +300,7 @@ CoocAna = function(mydata, ID.Col = "es", species = NA, ingradients = NA,
                      Pairs = Pairs.Needed, Cooc.Mat = CO.Mat,
                      Used.Ingradients = keep.ingradients)
   }
-  if(show.tables){ DisplayTable(mymod = my.output, with.splits = with.splits,
+  if(show.tables){ displaytable(mymod = my.output, with.splits = with.splits,
                                 table.out = "stats")}
   ###########################################################################################
   #11. return values

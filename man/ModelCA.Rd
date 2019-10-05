@@ -1,15 +1,15 @@
-\name{ModelCA}
+\name{modelca}
 \alias{cooccurExtra}
 \docType{data}
 \title{
-Output list of "CoocAna" function (with splits of ingradients).
+Output list of "coocana" function (with splits of ingradients).
 }
 \description{
-Output list of "CoocAna" function (with splits of ingradients), which includes cooccur models, matrix for using "cooccur" function, splits informations, statistic tables, the used species pairs and the used ingradients.
+Output list of "coocana" function (with splits of ingradients), which includes cooccur models, matrix for using "cooccur" function, splits informations, statistic tables, the used species pairs and the used ingradients.
 }
-\usage{data("ModelCA")}
+\usage{data("modelca")}
 \format{
-  An output list of "CoocAna" function (with splits of ingradients), which contains the following moduels.
+  An output list of "coocana" function (with splits of ingradients), which contains the following moduels.
   \describe{
     \item{Model}{
     Output models of the "cooccur" function.
@@ -32,5 +32,5 @@ Output list of "CoocAna" function (with splits of ingradients), which includes c
   }
 }
 \examples{
-data("ModelCA")
+data("modelca")
 }
