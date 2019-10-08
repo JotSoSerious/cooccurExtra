@@ -7,8 +7,9 @@ Maintainer: Yingjia J He <yhe497@aucklanduni.ac.nz>
 Description: This package is an extension use of R package "cooccur"
     Use for reproducing a huge work of cooccurence anaysis among a number of species pairs in different kinds of ingradients
     Some functional and visualize functions that may help doing the cooccurence anaysis
-    In addition, some functions may help providing autometic summary tables
+    In addition, some functions may help providing autometic summary tables.
 Depends: rpart, rattle, cooccur, formattable
+Suggest: showimage
 License: No idea
 Encoding: UTF-8
 LazyData: true

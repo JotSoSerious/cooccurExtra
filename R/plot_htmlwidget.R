@@ -17,9 +17,22 @@ plot_htmlwidget = function(widget, file = NULL){
   ###########################################################################################
   #1. check class of the htmlwidget object
   ###########################################################################################
+  # check the needed packages 
+  if(!("chromote" %in% installed.packages()[,1])){
+    writeLines(c("The needed package 'chromote' hasn't been installed yet.",
+                 "Then install it from github automatically."))
+    if(!("devtools" %in% installed.packages()[,1])){
+      writeLines(c("The needed package 'devtools' hasn't been installed yet.",
+                   "Then install it from CRAN automatically."))
+      install.packages("devtools")
+      library(devtools)
+    }
+    devtools::install_github("rstudio/chromote")
+    library(chromote)
+  }
   # check class of the htmlwidget object & stop if its not a formattable htmlwidget object
-  if(!inherits(widget, "formattable")) {
-    writeLines(c("Warning Message:",
+  if(!inherits(widget, "formattable")){
+    writeLines(c("Error Message :"
                  "The input object 'widget' is not a formattable htmlwidget object."))
     stop()
   }

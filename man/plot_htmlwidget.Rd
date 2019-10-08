@@ -27,8 +27,8 @@ Yingjia J He, Charco Hui
   # require packages
   # devtools::install_github("rstudio/chromote")
   # install.packages("showimage")
-  # library(chromote)
-  # library(showimage)
+  library(chromote)
+  library(showimage)
   
   # ask for a "coocana" output model
   data(ModelCA)
