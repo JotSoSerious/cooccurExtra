@@ -32,7 +32,7 @@ plot_htmlwidget = function(widget, file = NULL){
   }
   # check class of the htmlwidget object & stop if its not a formattable htmlwidget object
   if(!inherits(widget, "formattable")){
-    writeLines(c("Error Message :"
+    writeLines(c("Error Message :",
                  "The input object 'widget' is not a formattable htmlwidget object."))
     stop()
   }
