@@ -36,28 +36,34 @@ plot_htmlwidget = function(widget, file = NULL){
       install.packages("devtools")
       library(devtools)
     }
+    # save the session information
     SInf = sessionInfo()
-    if(as.numeric_version(SInf$loadedOnly$later$Version) < as.numeric_version("0.8.0.9003")){
-      writeLines(c(paste("Namespace 'later'", SInf$loadedOnly$later$Version, 
-                         "is being loaded, but version >= 0.8.0.9003 is required."),
-                   "Then update it from CRAN automatically.",
-                   "",
-                   "---------------------------------------------------------------------"))
-      install.packages("later")
-      library(later)
+    # update package "later"
+    if("later" %in% names(SInf$loadedOnly)){
+      if(as.numeric_version(SInf$loadedOnly$later$Version) < as.numeric_version("0.8.0.9003")){
+         writeLines(c(paste("Namespace 'later'", SInf$loadedOnly$later$Version, 
+                            "is being loaded, but version >= 0.8.0.9003 is required."),
+                      "Then update it from CRAN automatically.",
+                      "",
+                      "---------------------------------------------------------------------"))
+         install.packages("later")
+         library(later)
+      }
     }
-    if(as.numeric_version(SInf$loadedOnly$promises$Version) < as.numeric_version("1.0.1.9002")){
-      writeLines(c(paste("Namespace 'promises'", SInf$loadedOnly$promises$Version, 
-                         "is being loaded, but version >= 1.0.1.9002 is required."),
-                   "Then update it from CRAN automatically.",
-                   "",
-                   "---------------------------------------------------------------------"))
-      install.packages("promises")
-      library(promises)
+    # update package "promises"
+    if("promises" %in% names(SInf$loadedOnly)){
+      if(as.numeric_version(SInf$loadedOnly$promises$Version) < as.numeric_version("1.0.1.9002")){
+         writeLines(c(paste("Namespace 'promises'", SInf$loadedOnly$promises$Version, 
+                            "is being loaded, but version >= 1.0.1.9002 is required."),
+                      "Then update it from CRAN automatically.",
+                      "",
+                      "---------------------------------------------------------------------"))
+         install.packages("promises")
+         library(promises)
+      }
     }
     devtools::install_github("rstudio/chromote", dependencies = TRUE, 
                              upgrade = "never", force = TRUE)
-    library(chromote)
   }
   # check class of the htmlwidget object & stop if its not a formattable htmlwidget object
   if(!inherits(widget, "formattable")){
@@ -65,6 +71,8 @@ plot_htmlwidget = function(widget, file = NULL){
                  "The input object 'widget' is not a formattable htmlwidget object."))
     stop()
   }
+  # library "chromote"
+  library(chromote)
   ###########################################################################################
   #2. main functioning part
   ###########################################################################################
@@ -78,7 +86,7 @@ plot_htmlwidget = function(widget, file = NULL){
   # show an save the reflected object as a plot
   # b$screenshot(selector = "#htmlwidget_container", show = TRUE,
   #              filename = file)
-  b$screenshot(show = TRUE, filename = file)
+  b$screenshot(selector = "body", show = TRUE, filename = file)
   # close the temp html window
   b$close()
   ###########################################################################################
