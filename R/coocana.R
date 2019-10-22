@@ -5,7 +5,7 @@
 # # A function for "cooccur" analysis
 #####
 coocana= function(mydata, ID.Col = "es", species = NA, ingradients = NA,
-                   type = c("byrow", "bycol", "all"),
+                   type = c("byrow", "bycol", "all"), plot_title = TRUE,
                    with.splits = FALSE, show.tables = FALSE,
                    pair.scatter = c("scatter", "fit", "none"),
                    any.output = c("lite", "full", "none"),
@@ -17,11 +17,12 @@ coocana= function(mydata, ID.Col = "es", species = NA, ingradients = NA,
   #####*3* "species" can be any species that contain in data set
   #####*4* "ingradients" can be any species that contains in data set, no more than three types
   #####*5* "type" gives the choices of species pairing type
-  #####*6* "with.splits" gives the choices of output
-  #####*7* "show.tables" logical, show tables of stats if "TRUE"
-  #####*8* "pair.scatter" gives the choices of scatter plots ("fit" if fitted spline wanted)
-  #####*9* "any.output" logical, show if the lite output is needed
-  #####*10* "show.split.plot" gives the choices of splits plots
+  #####*6* "plot_title" logical. indicate showing plots with or without title.
+  #####*7* "with.splits" gives the choices of output
+  #####*8* "show.tables" logical, show tables of stats if "TRUE"
+  #####*9* "pair.scatter" gives the choices of scatter plots ("fit" if fitted spline wanted)
+  #####*10* "any.output" logical, show if the lite output is needed
+  #####*11* "show.split.plot" gives the choices of splits plots
 
   ###########################################################################################
   #0. turn down warnings and initialize
@@ -101,7 +102,7 @@ coocana= function(mydata, ID.Col = "es", species = NA, ingradients = NA,
   #2. if splits are needed
   ###########################################################################################
   if(with.splits){
-    Temp.Splits = treesplits(MyData.1, species = keep.species,
+    Temp.Splits = treesplits(MyData.1, species = keep.species, plot_title = plot_title,
                              ingradients = keep.ingradients, show.plots = show.split.plot)
   }
   ###########################################################################################
@@ -127,11 +128,14 @@ coocana= function(mydata, ID.Col = "es", species = NA, ingradients = NA,
       temp.x = mydata[, Pairs.Needed[i, 2]]
       temp.y = mydata[, Pairs.Needed[i, 1]]
       plot(temp.x, temp.y, type = "p",
-           xlab = Pairs.Needed[i, 2], ylab = Pairs.Needed[i, 1],
-           main = paste("Scatter Plot of \n", Pairs.Needed[i, 1],
-                        "VS", Pairs.Needed[i, 2]))
+           xlab = Pairs.Needed[i, 2], ylab = Pairs.Needed[i, 1])
+      if(plot_title){
+        title(main = paste("Scatter Plot of \n", Pairs.Needed[i, 1],
+                           "VS", Pairs.Needed[i, 2]))
+      }
       if(pair.scatter == "fit"){
-        temp.fit = lm(temp.y ~ temp.x + I(temp.x^2))
+        # temp.fit = lm(temp.y ~ temp.x + I(temp.x^2))
+        temp.fit = lm(temp.y ~ temp.x)
         temp.x.vect = seq(min(temp.x), max(temp.x), length.out = 200)
         temp.y.vect = predict(temp.fit, type = "response",
                               newdata = data.frame(temp.x = temp.x.vect))

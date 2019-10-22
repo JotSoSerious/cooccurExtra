@@ -10,7 +10,7 @@ This is the main function of the package "cooccurExtra". The main idea of this f
 coocana(mydata, ID.Col = "es", species = NA, ingradients = NA,
         type = c("byrow", "bycol", "all"), with.splits = FALSE,
         show.tables = FALSE, pair.scatter = c("scatter", "fit", "none"),
-        any.output = c("lite", "full", "none"),
+        any.output = c("lite", "full", "none"), plot_title = TRUE,
         show.split.plot = c("none", "both", "splits", "dendrogram"))
 }
 \arguments{
@@ -25,6 +25,9 @@ coocana(mydata, ID.Col = "es", species = NA, ingradients = NA,
 }
   \item{ingradients}{
      A list of charaters with names of the needed ingradients where to be shown in the tables.
+}
+  \item{plot_title}{
+     A logical value, which indicates showing plots with or without title.
 }
   \item{type}{
      Charaters string, choices of species pairing types. (type = "byrow") by default. Pairing all possible pairs of species if (type = "all").

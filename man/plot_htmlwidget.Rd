@@ -31,10 +31,10 @@ Yingjia J He, Charco Hui
   library(showimage)
   
   # ask for a "coocana" output model
-  data(ModelCA)
+  data(modelca)
   
   # get the output from displaytable function
-  mytest = displaytable(mymod = ModelCA)
+  mytest = displaytable(mymod = modelca)
   
   # get the plots from 
   plot_htmlwidget(mytest$STATSFT)

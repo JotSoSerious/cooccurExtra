@@ -4,14 +4,16 @@
 #####
 # A function to detect break points of species occurance in different ingradients 
 #####
-treesplits = function(mydata, species, ingradients, #method = "tree", 
+treesplits = function(mydata, species, ingradients, 
+                      plot_title = TRUE, #method = "tree", 
                       show.plots = c("both", "splits", 
                                      "dendrogram", "none")){
   #####*1* "mydata" is a data set with all the variables that we need
   #####*2* "methods" could be "tree" and some others, will update in the future
   #####*3* "species" can be any species that contain in data set
   #####*4* "ingradients" can be any species that contains in data set, no more than three types
-  #####*5* "show.plots" gives the choices of plots  
+  #####*5* "show.plots" gives the choices of plots 
+  #####*6* "plot_title" logical. indicate showing plots with or without title.
   
   ###########################################################################################
   #0. turn down warnings
@@ -87,8 +89,10 @@ treesplits = function(mydata, species, ingradients, #method = "tree",
       Splits[[n]][[m]] = tempsplit
       if(show.plots == "both" | show.plots == "splits"){
         plot(x = mydata[, j], y = mydata[, i], type = "p", 
-             ylab = NameMacrofauna, xlab = keep.ingradients[n], 
-             main = paste0(NameMacrofauna, " VS ", keep.ingradients[n]))
+             ylab = NameMacrofauna, xlab = keep.ingradients[n])
+        if(plot_title){
+          title(main = paste0(NameMacrofauna, " VS ", keep.ingradients[n]))
+        }
         for(k in 1:length(tempsplit)){
           abline(v = tempsplit[k], lty = 2, col = 2, lwd = 2)
         }
@@ -100,8 +104,10 @@ treesplits = function(mydata, species, ingradients, #method = "tree",
         n = n + 1
         model.tree = temp.models[[n]]
         fancyRpartPlot(prune(model.tree, cp = model.tree$cptable[model.tree$cptable[, "nsplit"] == 1, "CP"]),
-                       main = paste0("Dendrogram of \n", NameMacrofauna, " VS ", keep.ingradients[n]),
                        sub = "", digits = 4)
+        if(plot_title){
+          title(main = paste0("Dendrogram of \n", NameMacrofauna, " VS ", keep.ingradients[n]))
+        }
       }
     }
     n = 0
