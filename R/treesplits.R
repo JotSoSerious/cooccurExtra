@@ -4,7 +4,7 @@
 #####
 # A function to detect break points of species occurance in different ingradients 
 #####
-treesplits = function(mydata, species, ingradients, 
+treesplits = function(mydata, species, ingradients, first_split = FALSE,
                       plot_title = TRUE, #method = "tree", 
                       show.plots = c("both", "splits", 
                                      "dendrogram", "none")){
@@ -13,7 +13,8 @@ treesplits = function(mydata, species, ingradients,
   #####*3* "species" can be any species that contain in data set
   #####*4* "ingradients" can be any species that contains in data set, no more than three types
   #####*5* "show.plots" gives the choices of plots 
-  #####*6* "plot_title" logical. indicate showing plots with or without title.
+  #####*6* "plot_title" logical. indicates showing plots with or without title.
+  #####*6* "first_split" logical. indicates showing scatter with only the first split.
   
   ###########################################################################################
   #0. turn down warnings
@@ -93,7 +94,7 @@ treesplits = function(mydata, species, ingradients,
         if(plot_title){
           title(main = paste0(NameMacrofauna, " VS ", keep.ingradients[n]))
         }
-        for(k in 1:length(tempsplit)){
+        for(k in 1:ifelse(first_split, 1, length(tempsplit))){
           abline(v = tempsplit[k], lty = 2, col = 2, lwd = 2)
         }
       }

@@ -103,7 +103,8 @@ coocana= function(mydata, ID.Col = "es", species = NA, ingradients = NA,
   ###########################################################################################
   if(with.splits){
     Temp.Splits = treesplits(mydata = mydata, species = keep.species, plot_title = plot_title,
-                             ingradients = keep.ingradients, show.plots = show.split.plot)
+                             ingradients = keep.ingradients, show.plots = show.split.plot,
+                             first_split = TRUE)
   }
   ###########################################################################################
   #3. create matrix to store pairs that are needed

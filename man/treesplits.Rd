@@ -7,7 +7,7 @@ A function to detect break points of species occurance in different ingradients.
 This is a function of the package "cooccurExtra". The main idea of this function is detecting break points of species occurance in different ingradients with the information of species and ingradients from different regions. It provides two kinds of plots to show the breaks points in different ingradients of each specie. Also it provides an output of break points (splits) of each ingradient and for each specie.
 }
 \usage{
-treesplits = function(mydata, species, ingradients, plot_title = TRUE, 
+treesplits = function(mydata, species, ingradients, plot_title = TRUE, first_split = FALSE,
                       show.plots = c("both", "splits", "dendrogram", "none"))
 }
 \arguments{
@@ -22,6 +22,9 @@ treesplits = function(mydata, species, ingradients, plot_title = TRUE,
 }
   \item{plot_title}{
      A logical value, which indicates showing plots with or without title.
+}
+  \item{first_split}{
+     A logical value, which indicates showing scatter plots with only the first split or showing all the splits. By default, first_split = FALSE, which means only the first splits will be shown. 
 }
   \item{show.plots}{
      A choice of the showing plots. (show.plots = "splits") shows only the break points in the scatter plots. (show.plots = "dendrgram") shows only the tree dendrograms from the "rpart" models. (show.plots = "none") if no plot is needed. The default is (show.plots = "both"), which shows both the splits plots and the dendrograms.
