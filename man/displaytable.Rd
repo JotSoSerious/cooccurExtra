@@ -7,9 +7,9 @@ A function for display the result tables.
 This is a function of the package "cooccurExtra". The main idea of this function is displaying the result tables in fancy format. It provides both significant cooccurence table and a table with statistic information.
 }
 \usage{
-displaytable = function(mymod, ingradients = mymod$Used.Ingradients, with.splits = FALSE,
-                        table.out = c("both", "stats", "significants"),
-                        collapse_row = c("no", "top", "bottom"))
+displaytable(mymod, ingradients = mymod$Used.Ingradients, with.splits = FALSE,
+             table.out = c("both", "stats", "significants"),
+             collapse_row = c("no", "top", "bottom"))
 }
 \arguments{
   \item{mymod}{
