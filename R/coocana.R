@@ -102,7 +102,7 @@ coocana= function(mydata, ID.Col = "es", species = NA, ingradients = NA,
   #2. if splits are needed
   ###########################################################################################
   if(with.splits){
-    Temp.Splits = treesplits(MyData.1, species = keep.species, plot_title = plot_title,
+    Temp.Splits = treesplits(mydata = mydata, species = keep.species, plot_title = plot_title,
                              ingradients = keep.ingradients, show.plots = show.split.plot)
   }
   ###########################################################################################
