@@ -9,6 +9,7 @@ This is a function of the package "cooccurExtra". The main idea of this function
 \usage{
 displaytable(mymod, ingradients = mymod$Used.Ingradients, with.splits = FALSE,
              table.out = c("both", "stats", "significants"),
+             full_stats = c("full", "prob", "obs"),
              collapse_row = c("no", "top", "bottom"))
 }
 \arguments{
@@ -23,6 +24,9 @@ displaytable(mymod, ingradients = mymod$Used.Ingradients, with.splits = FALSE,
 }
   \item{table.out}{
      Charater string, a choice of preferance output tables. (table.out = "stats") if only the table with statistics is needed. (table.out = "significants") if only the table with cooccurence association is needed. The default value is (table.out = "both"), which returns and shows both kinds of tables.
+}
+  \item{full_stats}{
+     Charater string, a choice of preferance output of statistic tables. (full_stats = "prob") if probability values are needed in statistics table. (full_stats = "obs") shows the observed number of species occurrence or co-occurrence. The default value is (full_stats = "full"), which returns all the statistic from coocana() output.
 }
   \item{collapse_row}{
      Character string, options of preferrance of the aligning form. (collapse_row = "top") gives the tables with species names and ingradients aligned to the top. (collapse_row = "bottom") gives the tables with species names and ingradients aligned to the bottom. The default value is (collapse_row = "no"), which returns and shows no aligned tables.
