@@ -292,15 +292,19 @@ displaytable = function(mymod, ingradients = mymod$Used.Ingradients, with.splits
                               Exp_Cooccur = formatter("span",
                                                       style = ~ style(color = "black",
                                                                       font.weight = "bold")),
-                              P_lt = formatter("span",
-                                               style = ~ style(color = "darkslategrey",
-                                                               font.weight = "bold")),
+                              P_lt = formatter("span", style = ~
+                                                 style(color = ifelse(1 - P_gt < judge.trc,
+                                                                      "tomato",
+                                                                      "darkslategrey"),
+                                                       font.weight = "bold"),
+                                               ~ icontext(ifelse(1 - P_gt < judge.trc,
+                                                                 "star", ""), P_lt)),
                               P_gt = formatter("span", style = ~
-                                                 style(color = ifelse(P_gt < judge.trc,
+                                                 style(color = ifelse(1 - P_lt < judge.trc,
                                                                       "seagreen",
                                                                       "darkslategrey"),
                                                        font.weight = "bold"),
-                                               ~ icontext(ifelse(P_gt < judge.trc,
+                                               ~ icontext(ifelse(1 - P_lt < judge.trc,
                                                                  "star", ""), P_gt))))
       }else{
         if(full_stats == "obs"){
@@ -353,15 +357,19 @@ displaytable = function(mymod, ingradients = mymod$Used.Ingradients, with.splits
                                 Exp_Cooccur = formatter("span",
                                                         style = ~ style(color = "black",
                                                                         font.weight = "bold")),
-                                P_lt = formatter("span",
-                                                 style = ~ style(color = "darkslategrey",
-                                                                 font.weight = "bold")),
+                                P_lt = formatter("span", style = ~
+                                                   style(color = ifelse(1 - P_gt < judge.trc,
+                                                                        "tomato",
+                                                                        "darkslategrey"),
+                                                         font.weight = "bold"),
+                                                 ~ icontext(ifelse(1 - P_gt < judge.trc,
+                                                                   "star", ""), P_lt)),
                                 P_gt = formatter("span", style = ~
-                                                   style(color = ifelse(P_gt < judge.trc,
+                                                   style(color = ifelse(1 - P_lt < judge.trc,
                                                                         "seagreen",
                                                                         "darkslategrey"),
                                                          font.weight = "bold"),
-                                                 ~ icontext(ifelse(P_gt < judge.trc,
+                                                 ~ icontext(ifelse(1 - P_lt < judge.trc,
                                                                    "star", ""), P_gt))))
         }
       } 
@@ -384,15 +392,19 @@ displaytable = function(mymod, ingradients = mymod$Used.Ingradients, with.splits
                               Exp_Cooccur = formatter("span",
                                                       style = ~ style(color = "black",
                                                                       font.weight = "bold")),
-                              P_lt = formatter("span",
-                                               style = ~ style(color = "darkslategrey",
-                                                               font.weight = "bold")),
+                              P_lt = formatter("span", style = ~
+                                                 style(color = ifelse(1 - P_gt < judge.trc,
+                                                                      "tomato",
+                                                                      "darkslategrey"),
+                                                       font.weight = "bold"),
+                                               ~ icontext(ifelse(1 - P_gt < judge.trc,
+                                                                 "star", ""), P_lt)),
                               P_gt = formatter("span", style = ~
-                                                 style(color = ifelse(P_gt < judge.trc,
+                                                 style(color = ifelse(1 - P_lt < judge.trc,
                                                                       "seagreen",
                                                                       "darkslategrey"),
                                                        font.weight = "bold"),
-                                               ~ icontext(ifelse(P_gt < judge.trc,
+                                               ~ icontext(ifelse(1 - P_lt < judge.trc,
                                                                  "star", ""), P_gt))))
       }else{
         if(full_stats == "obs"){
@@ -433,15 +445,19 @@ displaytable = function(mymod, ingradients = mymod$Used.Ingradients, with.splits
                                 Exp_Cooccur = formatter("span",
                                                         style = ~ style(color = "black",
                                                                         font.weight = "bold")),
-                                P_lt = formatter("span",
-                                                 style = ~ style(color = "darkslategrey",
-                                                                 font.weight = "bold")),
+                                P_lt = formatter("span", style = ~
+                                                   style(color = ifelse(1 - P_gt < judge.trc,
+                                                                        "tomato",
+                                                                        "darkslategrey"),
+                                                         font.weight = "bold"),
+                                                 ~ icontext(ifelse(1 - P_gt < judge.trc,
+                                                                   "star", ""), P_lt)),
                                 P_gt = formatter("span", style = ~
-                                                   style(color = ifelse(P_gt < judge.trc,
+                                                   style(color = ifelse(1 - P_lt < judge.trc,
                                                                         "seagreen",
                                                                         "darkslategrey"),
                                                          font.weight = "bold"),
-                                                 ~ icontext(ifelse(P_gt < judge.trc,
+                                                 ~ icontext(ifelse(1 - P_lt < judge.trc,
                                                                    "star", ""), P_gt))))
         }
       }
