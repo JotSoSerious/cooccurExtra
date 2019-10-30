@@ -1,3 +1,28 @@
+#' Export cooccurence tables as an image.
+#'
+#' @param widget \code{htmlwidget} object.
+#' @param file The name of the file where the data will be saved. Default to \code{NULL}, no saving required.
+#' @description
+#' This function allow users to display cooccurence tables from the \code{cooccurExtra} in a word or pdf document.
+#' Since by default htmlwidget objects cannot be displayed in word or pdf documents.
+#' This function also allow users to save these tables as a PNG locally.
+#' @details
+#' To render the htmlwidget into an image. A headless browser is used to capture it, to do this the Chrome
+#' Dev Tool is used, the \code{chromote} package provides this functionality.
+#' @author
+#' Yingjia J He, Charco Hui
+#' @examples
+#' # require packages
+#' # devtools::install_github("rstudio/chromote")
+#' # install.packages("showimage")
+#' library(chromote)
+#' library(showimage)
+#' # ask for a "coocana" output model
+#' data(ModelCA)
+#' mytest = displaytable(mymod = modelca)
+#' plot_htmlwidget(mytest[[3]])
+#' plot_htmlwidget(mytest[[4]])
+
 #####
 # plot_htmlwidget
 #####
@@ -41,25 +66,25 @@ plot_htmlwidget = function(widget, file = NULL){
     # update package "later"
     if("later" %in% names(SInf$loadedOnly)){
       if(as.numeric_version(SInf$loadedOnly$later$Version) < as.numeric_version("0.8.0.9003")){
-         writeLines(c(paste("Namespace 'later'", SInf$loadedOnly$later$Version, 
-                            "is being loaded, but version >= 0.8.0.9003 is required."),
-                      "Then update it from CRAN automatically.",
-                      "",
-                      "---------------------------------------------------------------------"))
-         install.packages("later")
-         library(later)
+        writeLines(c(paste("Namespace 'later'", SInf$loadedOnly$later$Version, 
+                           "is being loaded, but version >= 0.8.0.9003 is required."),
+                     "Then update it from CRAN automatically.",
+                     "",
+                     "---------------------------------------------------------------------"))
+        install.packages("later")
+        library(later)
       }
     }
     # update package "promises"
     if("promises" %in% names(SInf$loadedOnly)){
       if(as.numeric_version(SInf$loadedOnly$promises$Version) < as.numeric_version("1.0.1.9002")){
-         writeLines(c(paste("Namespace 'promises'", SInf$loadedOnly$promises$Version, 
-                            "is being loaded, but version >= 1.0.1.9002 is required."),
-                      "Then update it from CRAN automatically.",
-                      "",
-                      "---------------------------------------------------------------------"))
-         install.packages("promises")
-         library(promises)
+        writeLines(c(paste("Namespace 'promises'", SInf$loadedOnly$promises$Version, 
+                           "is being loaded, but version >= 1.0.1.9002 is required."),
+                     "Then update it from CRAN automatically.",
+                     "",
+                     "---------------------------------------------------------------------"))
+        install.packages("promises")
+        library(promises)
       }
     }
     devtools::install_github("rstudio/chromote", dependencies = TRUE, 
@@ -94,3 +119,17 @@ plot_htmlwidget = function(widget, file = NULL){
   ###########################################################################################
   options(warn = oldw)
 }
+
+# plot_htmlwidget = function(widget, file = NULL) {
+#   if(!inherits(widget, "formattable")) {
+#     stop("This is not an formattable htmlwidget object.")
+#   }
+#   tmp_file = paste0(tempfile(), ".html")
+#   widget = as.htmlwidget(widget)
+#   htmlwidgets::saveWidget(widget, tmp_file)
+#   b = ChromoteSession$new()
+#   b$Page$navigate(tmp_file)
+#   b$screenshot(selector = "#htmlwidget_container", show = TRUE,
+#                filename = file)
+#   b$close()
+# }
