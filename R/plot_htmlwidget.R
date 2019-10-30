@@ -41,7 +41,7 @@ plot_htmlwidget = function(widget, file = NULL){
   oldw <- getOption("warn")
   options(warn = -1)
   ###########################################################################################
-  #1. check class of the htmlwidget object
+  #1. fault tolerant
   ###########################################################################################
   # check the needed packages 
   if(!("chromote" %in% installed.packages()[,1])){
@@ -95,24 +95,22 @@ plot_htmlwidget = function(widget, file = NULL){
   if(!inherits(widget, "formattable")){
     writeLines(c("Error Message :",
                  "The input object 'widget' is not a formattable htmlwidget object."))
-    stop()
-=======
-
-
-plot_htmlwidget = function(widget, file = NULL) {
-  if(!inherits(widget, "formattable")) {
-    stop("This is not an formattable htmlwidget object.")
->>>>>>> 12e515ebea018345fa66713da25c38975b2c3b1a
-  }
+    stop()}
+  ###########################################################################################
+  #2. main section
+  ###########################################################################################  
+  # create a temp file to hold the html widget object
   tmp_file = paste0(tempfile(), ".html")
   widget = as.htmlwidget(widget)
+  # open a virtual html window
   htmlwidgets::saveWidget(widget, tmp_file)
   b = ChromoteSession$new()
   b$Page$navigate(tmp_file)
+  # screenshot the window and save as png file
   b$screenshot(selector = "#htmlwidget_container", show = TRUE,
                filename = file)
+  # close the window
   b$close()
-<<<<<<< HEAD
   ###########################################################################################
   #3. turn back on warnings
   ###########################################################################################
@@ -132,6 +130,3 @@ plot_htmlwidget = function(widget, file = NULL) {
 #                filename = file)
 #   b$close()
 # }
-=======
-}
->>>>>>> 12e515ebea018345fa66713da25c38975b2c3b1a
