@@ -22,6 +22,7 @@
 #' mytest = displaytable(mymod = modelca)
 #' plot_htmlwidget(mytest[[3]])
 #' plot_htmlwidget(mytest[[4]])
+<<<<<<< HEAD
 
 #####
 # plot_htmlwidget
@@ -95,25 +96,23 @@ plot_htmlwidget = function(widget, file = NULL){
     writeLines(c("Error Message :",
                  "The input object 'widget' is not a formattable htmlwidget object."))
     stop()
+=======
+
+
+plot_htmlwidget = function(widget, file = NULL) {
+  if(!inherits(widget, "formattable")) {
+    stop("This is not an formattable htmlwidget object.")
+>>>>>>> 12e515ebea018345fa66713da25c38975b2c3b1a
   }
-  # library "chromote"
-  library(chromote)
-  ###########################################################################################
-  #2. main functioning part
-  ###########################################################################################
-  # create a temp file to hold the htmlwidget object
   tmp_file = paste0(tempfile(), ".html")
   widget = as.htmlwidget(widget)
   htmlwidgets::saveWidget(widget, tmp_file)
-  # create a temp html window for reflecting the htmlwidget object
   b = ChromoteSession$new()
   b$Page$navigate(tmp_file)
-  # show an save the reflected object as a plot
-  # b$screenshot(selector = "#htmlwidget_container", show = TRUE,
-  #              filename = file)
-  b$screenshot(selector = "body", show = TRUE, filename = file)
-  # close the temp html window
+  b$screenshot(selector = "#htmlwidget_container", show = TRUE,
+               filename = file)
   b$close()
+<<<<<<< HEAD
   ###########################################################################################
   #3. turn back on warnings
   ###########################################################################################
@@ -133,3 +132,6 @@ plot_htmlwidget = function(widget, file = NULL){
 #                filename = file)
 #   b$close()
 # }
+=======
+}
+>>>>>>> 12e515ebea018345fa66713da25c38975b2c3b1a
